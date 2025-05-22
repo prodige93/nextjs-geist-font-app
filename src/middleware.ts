@@ -17,10 +17,11 @@ export default withAuth(
   {
     callbacks: {
       authorized: ({ token, req }) => {
-        // Allow public access to login and register pages
+        // Allow public access to login, register, and design pages
         if (
           req.nextUrl.pathname.startsWith("/login") ||
           req.nextUrl.pathname.startsWith("/register") ||
+          req.nextUrl.pathname.startsWith("/design") ||
           req.nextUrl.pathname === "/"
         ) {
           return true;
@@ -34,5 +35,5 @@ export default withAuth(
 
 // Specify which routes should be protected
 export const config = {
-  matcher: ["/dashboard/:path*", "/login", "/register"],
+  matcher: ["/dashboard/:path*", "/login", "/register", "/design"],
 };
